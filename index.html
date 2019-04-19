@@ -1,0 +1,63 @@
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta charset="UTF-8" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/1.9.0/showdown.js" integrity="sha256-YpZ3n25FojLhv7mP9TGZz7SkreVaLXUV3sp0fQEQDg0="
+        crossorigin="anonymous"></script>
+    <title>NRTC's Guide for Internship</title>
+    <style>
+        @font-face {
+            font-family: 'IranianSansBold';
+            src: url('IranianSansBold.ttf') format('truetype');
+            font-weight: bold;
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: 'IranianSansRegular';
+            src: url('IranianSansRegular.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        .Center {
+            text-align: center;
+        }
+
+        .Left {
+            text-align: left;
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        p>strong {
+            font-family: 'IranianSansBold';
+        }
+
+        [lang|=fa] {
+            font-family: 'IranianSansRegular', Tahoma, 'Courier New', Courier, monospace;
+            text-align: right;
+        }
+    </style>
+</head>
+
+<body>
+    <div lang="fa">
+        <p id="MyText"></p>
+    </div>
+    <script>
+        function MyParser() {
+            showdown.setFlavor('github');
+            console.log(showdown.getOptions());
+            var MyConverter = new showdown.Converter();
+            document.getElementById("MyText").innerHTML = MyConverter.makeHtml(this.responseText);
+        }
+
+        var MyRequest = new XMLHttpRequest();
+        MyRequest.addEventListener("load", MyParser);
+        MyRequest.open("GET", "README.md");
+        MyRequest.send();
+    </script>
+</body>
+
+</html>
